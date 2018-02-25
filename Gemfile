@@ -2,6 +2,8 @@ source "https://rubygems.org"
 
 gem "rake"
 
+gem 'bcrypt'
+
 # Web framework
 gem "dry-system", "~> 0.9"
 gem "dry-web", "~> 0.7"
