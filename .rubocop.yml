@@ -1,0 +1,48 @@
+AllCops:
+  Exclude:
+    - 'vendor/**/*'
+    - config/**/*
+    - 'spec/fixtures/**/*'
+    - 'tmp/**/*'
+    - 'lib/dozer/**/*'
+
+Metrics/BlockLength:
+  ExcludedMethods: ['describe', 'context', 'included', 'namespace', 'helpers', 'resource', 'shared_examples', 'let']
+
+Style/Documentation:
+  Enabled: false
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Style/Encoding:
+  Enabled: false
+
+Metrics/LineLength:
+  Max: 120
+  Exclude:
+    - 'spec/**/*'
+
+Style/PerlBackrefs:
+  Enabled: false
+
+Style/SignalException:
+  EnforcedStyle: only_raise
+
+RSpec/MessageSpies:
+  Enabled: false
+
+RSpec/AnyInstance:
+  Enabled: false
+
+Metrics/CyclomaticComplexity:
+  Enabled: false
+
+RSpec/NestedGroups:
+  Enabled: false
+
+RSpec/MessageChain:
+  Enabled: false
+
+Lint/UnneededDisable:
+  Enabled: false

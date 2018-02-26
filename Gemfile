@@ -19,6 +19,8 @@ gem "pg"
 gem "rom", "~> 4.0"
 gem "rom-sql", "~> 2.1"
 
+gem 'rubocop'
+
 # Application dependencies
 gem "dry-matcher", "~> 0.6.0"
 gem "dry-monads", "~> 0.3"
