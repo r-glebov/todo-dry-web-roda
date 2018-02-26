@@ -27,6 +27,12 @@ module Todo
         end
       end
 
+      def current_user
+        return unless session[:user_id]
+        @current_user ||= self.class['core.repositories.users_repo']
+                              .users.by_pk(session[:user_id]).one
+      end
+
       # Request-specific options for dry-view context object
       def view_context_options
         {
@@ -34,6 +40,7 @@ module Todo
           csrf_token:   Rack::Csrf.token(request.env),
           csrf_metatag: Rack::Csrf.metatag(request.env),
           csrf_tag:     Rack::Csrf.tag(request.env),
+          current_user: current_user
         }
       end
 
