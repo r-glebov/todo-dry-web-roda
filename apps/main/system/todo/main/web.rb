@@ -1,11 +1,11 @@
-require "dry/web/roda/application"
-require_relative "container"
+require 'dry/web/roda/application'
+require_relative 'container'
 
 module Todo
   module Main
     class Web < Dry::Web::Roda::Application
       setting :public_routes
-      
+
       configure do |config|
         config.container = Container
         config.routes = 'web/routes'.freeze
@@ -27,7 +27,7 @@ module Todo
           flash[:alert] = 'Unauthorized!'
           r.redirect '/'
         end
-        
+
         r.multi_route
 
         r.root do
@@ -39,6 +39,14 @@ module Todo
         return unless session[:user_id]
         @current_user ||= self.class['core.repositories.users_repo']
                               .users.by_pk(session[:user_id]).one
+      end
+
+      def params_with_user(params)
+        { params: params, current_user: current_user }
+      end
+
+      def hash_with_user(hash = {})
+        hash.merge(current_user: current_user)
       end
 
       def view_context_options

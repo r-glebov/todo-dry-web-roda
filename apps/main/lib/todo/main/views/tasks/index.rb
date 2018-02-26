@@ -8,7 +8,7 @@ module Todo
     module Views
       module Tasks
         class Index < Main::View::Controller
-          include Import['policies.tasks_scope']
+          include Main::Import['policies.tasks_scope']
 
           configure do |config|
             config.template = 'tasks/index'
@@ -18,6 +18,13 @@ module Todo
 
           expose :tasks do |current_user|
             tasks_scope.(current_user).to_a
+          end
+
+          expose :validation
+
+          expose :new_task do |validation|
+            description = validation.to_h[:description]
+            Struct.new(:description).new(description)
           end
         end
       end
