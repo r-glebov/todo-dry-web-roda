@@ -29,6 +29,9 @@ Style/PerlBackrefs:
 Style/SignalException:
   EnforcedStyle: only_raise
 
+Style/LambdaCall:
+  Enabled: false
+
 RSpec/MessageSpies:
   Enabled: false
 
