@@ -15,12 +15,14 @@ module Todo
       opts[:root] = Pathname(__FILE__).join("../../..").realpath.dirname
 
       use Rack::Session::Cookie, key: 'todo.main.session', secret: self['core.settings'].session_secret
+      use Rack::MethodOverride
 
       plugin :csrf, raise: true
       plugin :dry_view
       plugin :error_handler
       plugin :flash
       plugin :multi_route
+      plugin :all_verbs
 
       route do |r|
         unless authorize
